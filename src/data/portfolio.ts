@@ -15,8 +15,8 @@ export const portfolio: PortfolioData = {
     "I'm particularly interested in AI integration — building applications that leverage generative AI and intelligent APIs to create smarter, more useful software.",
   ],
   socialLinks: {
-    github: "https://github.com/shashankshekhar", // Update with real handle
-    linkedin: "https://linkedin.com/in/shashankshekhar", // Update with real handle
-    email: "shashank@example.com", // Update with real email
+    github: "https://github.com/shashank8536",
+    linkedin: "https://www.linkedin.com/in/shashank8536/",
+    email: "shashankshekhargiri2003@gmail.com",
   },
 };

@@ -134,6 +134,21 @@ export default async function ProjectCaseStudy({ params }: Props) {
               </span>
             ))}
           </div>
+
+          {/* Action Links */}
+          {project.links?.github && (
+            <div className="pt-2">
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-5 py-2.5 text-xs font-mono font-semibold text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-200"
+              >
+                <ExternalLink className="h-3.5 w-3.5" />
+                <span>VIEW SHASHANK&apos;S REPOSITORY</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* ============================================================

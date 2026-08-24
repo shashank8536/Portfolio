@@ -110,7 +110,12 @@ export function generateAnswer(userQuery: string): AIResponse {
   ) {
     return {
       answer:
-        "You can reach out to Shashank directly via email or check out his professional profiles on GitHub and LinkedIn. He is actively open to Full Stack Developer & Software Engineering opportunities.",
+        `You can reach out to Shashank directly:
+• Email: shashankshekhargiri2003@gmail.com
+• GitHub: github.com/shashank8536
+• LinkedIn: linkedin.com/in/shashank8536
+
+He is actively open to Full Stack Developer & Software Engineering roles.`,
       sectionLink: {
         label: "Go to Contact Section →",
         href: "/#contact",

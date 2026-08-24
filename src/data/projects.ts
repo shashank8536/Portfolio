@@ -134,8 +134,7 @@ export const projects: Project[] = [
     result:
       "A production-ready travel platform that demonstrates end-to-end full-stack development capabilities — from secure authentication and complex booking logic to AI integration and cloud infrastructure.",
     links: {
-      github: "#", // Update with real link
-      live: "#", // Update with real link
+      github: "https://github.com/shashank8536",
     },
   },
   {
@@ -200,7 +199,7 @@ export const projects: Project[] = [
     result:
       "A functional campus marketplace that demonstrates full-stack development with real-time features, solving a genuine student problem.",
     links: {
-      github: "#", // Update with real link
+      github: "https://github.com/shashank8536",
     },
   },
 ];

@@ -6,9 +6,9 @@ export const SITE = {
   description:
     "Full Stack Developer & AI Enthusiast building real-world software with modern technologies.",
   url: "https://shashankshekhar.dev", // Update after deployment
-  github: "https://github.com/shashankshekhar", // Update with real handle
-  linkedin: "https://linkedin.com/in/shashankshekhar", // Update with real handle
-  email: "shashank@example.com", // Update with real email
+  github: "https://github.com/shashank8536",
+  linkedin: "https://www.linkedin.com/in/shashank8536/",
+  email: "shashankshekhargiri2003@gmail.com",
 } as const;
 
 /** Navigation links */
