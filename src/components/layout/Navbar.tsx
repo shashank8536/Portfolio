@@ -7,10 +7,12 @@ import { cn } from "@/lib/utils/cn";
 import { NAV_LINKS } from "@/lib/utils/constants";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Container } from "@/components/layout/Container";
+import { AskShashankModal } from "@/components/ai/AskShashankModal";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const progress = useScrollProgress();
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export function Navbar() {
           >
             {/* Logo */}
             <a
-              href="#hero"
+              href="/#hero"
               className="group relative flex items-center"
               aria-label="Back to top"
             >
@@ -68,7 +70,7 @@ export function Navbar() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
-                  href={link.href}
+                  href={`/${link.href}`}
                   className={cn(
                     "relative px-4 py-2 text-sm font-medium text-text-secondary",
                     "transition-colors duration-200 hover:text-text-primary",
@@ -82,9 +84,10 @@ export function Navbar() {
 
               {/* Ask Shashank CTA */}
               <button
+                onClick={() => setIsAiModalOpen(true)}
                 className={cn(
                   "ml-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5",
-                  "bg-accent-cta text-bg-primary text-sm font-semibold",
+                  "bg-accent-cta text-bg-primary text-sm font-semibold cursor-pointer",
                   "transition-all duration-200",
                   "hover:bg-accent-cta-hover hover:shadow-[0_0_20px_rgba(245,158,11,0.25)]",
                   "active:scale-[0.97]"
@@ -142,7 +145,7 @@ export function Navbar() {
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.label}
-                  href={link.href}
+                  href={`/${link.href}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -159,6 +162,10 @@ export function Navbar() {
 
               {/* Ask Shashank CTA - Mobile */}
               <motion.button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsAiModalOpen(true);
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -180,6 +187,12 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* AI Assistant Chat Modal */}
+      <AskShashankModal
+        isOpen={isAiModalOpen}
+        onClose={() => setIsAiModalOpen(false)}
+      />
     </>
   );
 }
