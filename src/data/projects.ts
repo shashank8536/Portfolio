@@ -139,56 +139,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "garbage-alert",
-    title: "Garbage Alert System",
-    subtitle:
-      "A smart waste management system designed to improve communication between citizens and garbage collection services.",
-    description:
-      "The Garbage Alert System is a civic technology project designed to bridge the communication gap between citizens and garbage collection services, with a particular focus on Tier-2 and Tier-3 city contexts where waste management infrastructure is often lacking.",
-    category: "CIVIC TECH",
-    categoryColor: "success",
-    isFeatured: false,
-    techStack: [], // Update when confirmed
-    problem:
-      "In many Tier-2 and Tier-3 cities, garbage collection is inconsistent and there is no efficient communication channel between citizens and collection services. Residents have no way to report overflowing bins, missed pickups, or request special collection services.",
-    context:
-      "This project addresses a real-world urban problem that affects millions of people in Indian cities. The lack of efficient waste management communication leads to public health risks, environmental degradation, and citizen frustration.",
-    approach:
-      "Designed as a smart system that enables two-way communication between citizens and garbage collection services. The focus was on creating a practical solution that works within the constraints of developing urban environments.",
-    architecture:
-      "Built with a focus on user experience and practical deployment. The system architecture prioritizes reliability and ease of use for both citizens and collection service operators.",
-    features: [
-      {
-        title: "Problem Reporting",
-        description:
-          "Citizens can report waste management issues in their area.",
-        icon: "AlertTriangle",
-      },
-      {
-        title: "Service Communication",
-        description:
-          "Two-way communication channel between citizens and collection services.",
-        icon: "MessageSquare",
-      },
-      {
-        title: "Real-world Impact",
-        description:
-          "Designed specifically for Tier-2/Tier-3 city contexts where infrastructure is lacking.",
-        icon: "Globe",
-      },
-    ],
-    challenges: [
-      "Designing a system that works within the infrastructure constraints of smaller cities.",
-      "Creating an interface simple enough for diverse user demographics.",
-    ],
-    decisions: [],
-    result:
-      "A civic technology solution that demonstrates how software can address real urban challenges and improve quality of life for city residents.",
-    links: {
-      github: "#", // Update with real link
-    },
-  },
-  {
     slug: "campus-marketplace",
     title: "Campus Marketplace",
     subtitle:
@@ -249,54 +199,6 @@ export const projects: Project[] = [
     ],
     result:
       "A functional campus marketplace that demonstrates full-stack development with real-time features, solving a genuine student problem.",
-    links: {
-      github: "#", // Update with real link
-    },
-  },
-  {
-    slug: "weathertune",
-    title: "WeatherTune",
-    subtitle:
-      "Weather-aware music recommendations powered by API integration.",
-    description:
-      "WeatherTune combines weather data with music recommendations, suggesting playlists and songs that match the current weather conditions in the user's location.",
-    category: "UTILITY",
-    categoryColor: "cta",
-    isFeatured: false,
-    techStack: [], // Update when confirmed
-    problem:
-      "Music listeners often choose songs that match their mood, which is frequently influenced by weather. There's no simple way to get weather-contextual music recommendations.",
-    context:
-      "A utility project exploring API integration patterns — combining multiple external services (weather and music APIs) into a cohesive user experience.",
-    approach:
-      "Integrates weather APIs with music recommendation logic to generate contextually relevant playlists based on current weather conditions.",
-    architecture:
-      "API-driven architecture that fetches real-time weather data and maps weather conditions to music genres and moods.",
-    features: [
-      {
-        title: "Weather Detection",
-        description: "Real-time weather data based on user location.",
-        icon: "CloudSun",
-      },
-      {
-        title: "Music Recommendations",
-        description:
-          "Algorithmically matched music suggestions based on weather conditions.",
-        icon: "Music",
-      },
-      {
-        title: "API Integration",
-        description: "Seamless integration of multiple external APIs.",
-        icon: "Plug",
-      },
-    ],
-    challenges: [
-      "Mapping weather conditions to appropriate music moods and genres.",
-      "Handling API rate limits and fallback strategies.",
-    ],
-    decisions: [],
-    result:
-      "A creative utility demonstrating API integration patterns and the ability to combine multiple data sources into a unified user experience.",
     links: {
       github: "#", // Update with real link
     },
