@@ -37,6 +37,18 @@ export interface Project {
     live?: string;
     github?: string;
   };
+  /** Screenshot image paths for gallery */
+  images?: string[];
+  /** Why the project was built (personal motivation) */
+  whyIBuiltIt?: string;
+  /** Concrete list of what was actually built */
+  whatIActuallyBuilt?: string[];
+  /** Concrete challenges faced and solved */
+  engineeringChallenges?: { title: string; description: string }[];
+  /** What was learned from building this */
+  whatILearned?: string;
+  /** What would be improved next */
+  whatIWouldImprove?: string;
 }
 
 export interface ProjectFeature {
@@ -71,11 +83,22 @@ export interface PortfolioData {
   role: string;
   tagline: string;
   about: string[];
+  resumeUrl: string;
+  profileImage: string;
   socialLinks: {
-    github?: string;
-    linkedin?: string;
-    email?: string;
+    github: string;
+    linkedin: string;
+    email: string;
   };
+  repoUrls: {
+    wandernest: string;
+    campusMarketplace: string;
+  };
+  currentlyLearning: {
+    topic: string;
+    description: string;
+  }[];
+  outsideTheCode: string;
 }
 
 /** AI chat message */

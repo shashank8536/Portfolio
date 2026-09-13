@@ -182,4 +182,76 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .animate-float-orb-primary,
+  .animate-float-orb-secondary,
+  .animate-float-orb-tertiary {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   LARGE FLOATING ATMOSPHERIC ORB ANIMATIONS
+   Slow, non-linear, natural floating trajectories (22s - 32s)
+   ============================================================ */
+@keyframes floatOrbPrimary {
+  0% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(-70px, 60px, 0) scale(1.06);
+  }
+  50% {
+    transform: translate3d(-130px, 15px, 0) scale(0.95);
+  }
+  75% {
+    transform: translate3d(-50px, -45px, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+}
+
+@keyframes floatOrbSecondary {
+  0% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  30% {
+    transform: translate3d(65px, -55px, 0) scale(1.08);
+  }
+  65% {
+    transform: translate3d(110px, 35px, 0) scale(0.93);
+  }
+  85% {
+    transform: translate3d(35px, 75px, 0) scale(1.03);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+}
+
+@keyframes floatOrbTertiary {
+  0% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  35% {
+    transform: translate3d(-45px, -35px, 0) scale(1.05);
+  }
+  70% {
+    transform: translate3d(35px, -60px, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+}
+
+.animate-float-orb-primary {
+  animation: floatOrbPrimary 26s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+.animate-float-orb-secondary {
+  animation: floatOrbSecondary 32s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+.animate-float-orb-tertiary {
+  animation: floatOrbTertiary 22s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }

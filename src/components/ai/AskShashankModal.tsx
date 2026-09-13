@@ -2,9 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, X, Send, User, Bot, ArrowRight, CornerDownLeft } from "lucide-react";
-import { generateAnswer, type AIResponse } from "@/lib/ai/assistantEngine";
+import { Sparkles, X, Send } from "lucide-react";
+import { generateAnswer } from "@/lib/ai/assistantEngine";
 import Link from "next/link";
+
+let msgCounter = 0;
+function createMsgId() {
+  msgCounter += 1;
+  return `msg-${msgCounter}`;
+}
 
 interface Message {
   id: string;
@@ -34,7 +40,7 @@ export function AskShashankModal({ isOpen, onClose }: AskShashankModalProps) {
     {
       id: "welcome",
       sender: "bot",
-      text: "Hey! I'm Shashank's AI portfolio assistant. Ask me anything about his projects, technical stack, or background.",
+      text: "Hey! Ask Shashank is a client-side portfolio assistant that uses intent and keyword matching to answer questions from verified portfolio data and guide visitors to relevant sections.\n\nAsk me anything about his projects, technical stack, background, or how to get in touch.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -76,7 +82,7 @@ export function AskShashankModal({ isOpen, onClose }: AskShashankModalProps) {
     if (!query || isTyping) return;
 
     const userMsg: Message = {
-      id: Date.now().toString(),
+      id: createMsgId(),
       sender: "user",
       text: query,
     };
@@ -89,7 +95,7 @@ export function AskShashankModal({ isOpen, onClose }: AskShashankModalProps) {
     setTimeout(() => {
       const response = generateAnswer(query);
       const botMsg: Message = {
-        id: (Date.now() + 1).toString(),
+        id: createMsgId(),
         sender: "bot",
         text: response.answer,
         sectionLink: response.sectionLink,
@@ -132,13 +138,13 @@ export function AskShashankModal({ isOpen, onClose }: AskShashankModalProps) {
                 </div>
                 <div>
                   <h2 id="modal-title" className="text-base font-bold text-slate-100 flex items-center gap-2">
-                    Ask Shashank AI
+                    Ask Shashank
                     <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 font-mono text-[10px] font-semibold text-emerald-400">
-                      LIVE
+                      LOCAL
                     </span>
                   </h2>
                   <p className="text-xs text-slate-400">
-                    Instant answers grounded in verified project &amp; skills data
+                    Client-side portfolio assistant · Grounded in verified portfolio data
                   </p>
                 </div>
               </div>

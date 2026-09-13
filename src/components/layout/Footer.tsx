@@ -1,4 +1,6 @@
-import { Mail, ArrowUp } from "lucide-react";
+"use client";
+
+import { Mail, ArrowUp, FileText } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SITE } from "@/lib/utils/constants";
 
@@ -7,8 +9,8 @@ function GithubIcon({ className }: { className?: string }) {
     <svg
       className={className}
       viewBox="0 0 24 24"
-      width="24"
-      height="24"
+      width="18"
+      height="18"
       stroke="currentColor"
       strokeWidth="2"
       fill="none"
@@ -26,8 +28,8 @@ function LinkedinIcon({ className }: { className?: string }) {
     <svg
       className={className}
       viewBox="0 0 24 24"
-      width="24"
-      height="24"
+      width="18"
+      height="18"
       stroke="currentColor"
       strokeWidth="2"
       fill="none"
@@ -42,34 +44,42 @@ function LinkedinIcon({ className }: { className?: string }) {
 }
 
 export function Footer() {
-  return (
-    <footer className="relative border-t border-border-default bg-bg-secondary/30">
-      {/* Decorative top gradient */}
-      <div
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary/20 to-transparent"
-        aria-hidden="true"
-      />
+  const handleResumeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (SITE.resume === "[I WILL PROVIDE THIS]") {
+      e.preventDefault();
+      alert("Resume URL placeholder: Please update RESUME_URL in src/data/portfolio.ts with your resume link or file path.");
+    }
+  };
 
+  const handleLinkedInClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (SITE.linkedin === "[I WILL PROVIDE THIS]") {
+      e.preventDefault();
+      alert("LinkedIn URL placeholder: Please update LINKEDIN_URL in src/data/portfolio.ts.");
+    }
+  };
+
+  return (
+    <footer className="relative border-t border-white/[0.06] bg-[#080c14]/80 backdrop-blur-sm">
       <Container>
-        <div className="flex flex-col items-center gap-6 py-12 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center gap-6 py-10 md:flex-row md:justify-between text-left">
           {/* Left — Name & copyright */}
           <div className="flex flex-col items-center gap-1 md:items-start">
-            <span className="text-sm font-semibold text-text-primary">
+            <span className="text-sm font-semibold text-slate-100">
               {SITE.name}
             </span>
-            <span className="text-xs text-text-muted">
-              © {new Date().getFullYear()} · Built with intention.
+            <span className="text-xs text-slate-400">
+              © {new Date().getFullYear()} · Software Engineer
             </span>
           </div>
 
-          {/* Center — Social links */}
-          <div className="flex items-center gap-4">
+          {/* Center — Social links & Resume */}
+          <div className="flex items-center gap-3">
             <a
               href={SITE.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-default text-text-muted transition-all duration-200 hover:border-border-hover hover:text-text-primary hover:bg-bg-hover"
+              aria-label="GitHub Profile"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] text-slate-400 transition-all duration-200 hover:border-slate-500 hover:text-white hover:bg-white/[0.04]"
             >
               <GithubIcon className="h-4 w-4" />
             </a>
@@ -77,26 +87,38 @@ export function Footer() {
               href={SITE.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-default text-text-muted transition-all duration-200 hover:border-border-hover hover:text-text-primary hover:bg-bg-hover"
+              aria-label="LinkedIn Profile"
+              onClick={handleLinkedInClick}
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] text-slate-400 transition-all duration-200 hover:border-slate-500 hover:text-white hover:bg-white/[0.04]"
             >
               <LinkedinIcon className="h-4 w-4" />
             </a>
             <a
               href={`mailto:${SITE.email}`}
-              aria-label="Email"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-default text-text-muted transition-all duration-200 hover:border-border-hover hover:text-text-primary hover:bg-bg-hover"
+              aria-label="Send Email"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] text-slate-400 transition-all duration-200 hover:border-slate-500 hover:text-white hover:bg-white/[0.04]"
             >
               <Mail className="h-4 w-4" />
+            </a>
+            <a
+              href={SITE.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Resume"
+              onClick={handleResumeClick}
+              className="flex items-center gap-1.5 px-3 h-9 rounded-lg border border-white/[0.08] text-xs font-mono text-slate-400 transition-all duration-200 hover:border-cyan-400/50 hover:text-cyan-300 hover:bg-white/[0.04]"
+            >
+              <FileText className="h-3.5 w-3.5" />
+              <span>Resume</span>
             </a>
           </div>
 
           {/* Right — Back to top */}
           <a
             href="#hero"
-            className="group flex items-center gap-2 text-xs text-text-muted transition-colors hover:text-accent-primary"
+            className="group flex items-center gap-2 text-xs text-slate-400 transition-colors hover:text-cyan-400"
           >
-            Back to top
+            <span>Back to top</span>
             <ArrowUp className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
           </a>
         </div>

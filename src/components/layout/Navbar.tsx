@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
-import { NAV_LINKS } from "@/lib/utils/constants";
+import { NAV_LINKS, SITE } from "@/lib/utils/constants";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Container } from "@/components/layout/Container";
 import { AskShashankModal } from "@/components/ai/AskShashankModal";
@@ -54,16 +55,15 @@ export function Navbar() {
             aria-label="Main navigation"
           >
             {/* Logo */}
-            <a
+            <Link
               href="/#hero"
-              className="group relative flex items-center"
+              className="group flex items-center gap-2"
               aria-label="Back to top"
             >
-              <span className="relative text-2xl font-extrabold tracking-tight text-accent-primary transition-all duration-200 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]">
-                SS
+              <span className="text-sm sm:text-base font-bold tracking-tight text-slate-100 uppercase transition-colors group-hover:text-cyan-400">
+                SHASHANK SHEKHAR
               </span>
-              <span className="ml-0.5 h-1.5 w-1.5 rounded-full bg-accent-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-            </a>
+            </Link>
 
             {/* Desktop Nav Links */}
             <div className="hidden items-center gap-1 md:flex">
@@ -82,19 +82,35 @@ export function Navbar() {
                 </a>
               ))}
 
+              {/* Resume Link */}
+              <a
+                href={SITE.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  if (SITE.resume === "[I WILL PROVIDE THIS]") {
+                    e.preventDefault();
+                    alert("Resume URL placeholder: Please update RESUME_URL in src/data/portfolio.ts with your resume link or file path.");
+                  }
+                }}
+                className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors cursor-pointer"
+              >
+                Resume ↗
+              </a>
+
               {/* Ask Shashank CTA */}
               <button
                 onClick={() => setIsAiModalOpen(true)}
                 className={cn(
-                  "ml-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5",
-                  "bg-accent-cta text-bg-primary text-sm font-semibold cursor-pointer",
+                  "ml-3 inline-flex items-center gap-2 rounded-full px-4 py-2",
+                  "border border-white/[0.12] bg-white/[0.04] text-slate-200 text-sm font-medium cursor-pointer",
                   "transition-all duration-200",
-                  "hover:bg-accent-cta-hover hover:shadow-[0_0_20px_rgba(245,158,11,0.25)]",
+                  "hover:border-cyan-400/50 hover:bg-white/[0.08] hover:text-white hover:shadow-[0_0_15px_rgba(34,211,238,0.15)]",
                   "active:scale-[0.97]"
                 )}
               >
-                <Sparkles className="h-3.5 w-3.5" />
-                Ask Shashank
+                <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+                <span>Ask Shashank</span>
               </button>
             </div>
 
@@ -160,6 +176,31 @@ export function Navbar() {
                 </motion.a>
               ))}
 
+              {/* Mobile Resume Link */}
+              <motion.a
+                href={SITE.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  if (SITE.resume === "[I WILL PROVIDE THIS]") {
+                    e.preventDefault();
+                    alert("Resume URL placeholder: Please update RESUME_URL in src/data/portfolio.ts with your resume link or file path.");
+                  } else {
+                    setIsMobileMenuOpen(false);
+                  }
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.1 + NAV_LINKS.length * 0.08,
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
+                className="text-2xl font-semibold text-slate-300 transition-colors hover:text-cyan-400 py-3"
+              >
+                Resume ↗
+              </motion.a>
+
               {/* Ask Shashank CTA - Mobile */}
               <motion.button
                 onClick={() => {
@@ -169,19 +210,19 @@ export function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: 0.1 + NAV_LINKS.length * 0.08,
+                  delay: 0.1 + (NAV_LINKS.length + 1) * 0.08,
                   duration: 0.4,
                   ease: "easeOut",
                 }}
                 className={cn(
-                  "mt-8 inline-flex items-center gap-2 rounded-full px-8 py-3.5",
-                  "bg-accent-cta text-bg-primary text-base font-semibold",
+                  "mt-8 inline-flex items-center gap-2 rounded-full px-7 py-3",
+                  "border border-white/[0.14] bg-white/[0.05] text-slate-100 text-base font-medium",
                   "transition-all duration-200",
-                  "hover:bg-accent-cta-hover hover:shadow-[0_0_20px_rgba(245,158,11,0.25)]"
+                  "hover:border-cyan-400/50 hover:bg-white/[0.1] hover:text-white"
                 )}
               >
-                <Sparkles className="h-4 w-4" />
-                Ask Shashank
+                <Sparkles className="h-4 w-4 text-cyan-400" />
+                <span>Ask Shashank</span>
               </motion.button>
             </div>
           </motion.div>

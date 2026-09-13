@@ -1,14 +1,13 @@
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/data/projects";
 import { Container } from "@/components/layout/Container";
+import Image from "next/image";
 import {
   ArrowLeft,
   Sparkles,
   Shield,
-  Layers,
   CheckCircle2,
   AlertCircle,
-  HelpCircle,
   ArrowRight,
   ExternalLink,
   Code2,
@@ -136,17 +135,31 @@ export default async function ProjectCaseStudy({ params }: Props) {
           </div>
 
           {/* Action Links */}
-          {project.links?.github && (
-            <div className="pt-2">
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-5 py-2.5 text-xs font-mono font-semibold text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-200"
-              >
-                <ExternalLink className="h-3.5 w-3.5" />
-                <span>VIEW SHASHANK&apos;S REPOSITORY</span>
-              </a>
+          {(project.links?.live || project.links?.github) && (
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              {project.links?.live && (
+                <a
+                  href={project.links.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-2.5 text-xs font-mono font-semibold text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-500/50 transition-all duration-200"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  <span>LIVE DEMO ↗</span>
+                </a>
+              )}
+
+              {project.links?.github && (
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-5 py-2.5 text-xs font-mono font-semibold text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-200"
+                >
+                  <Code2 className="h-3.5 w-3.5" />
+                  <span>GITHUB ↗</span>
+                </a>
+              )}
             </div>
           )}
         </div>
@@ -241,6 +254,94 @@ export default async function ProjectCaseStudy({ params }: Props) {
             })}
           </div>
         </section>
+
+        {/* ============================================================
+            Visual Showcase / Screenshots (Rendered when project has real screenshots)
+           ============================================================ */}
+        {project.images && project.images.length > 0 && (
+          <section className="border-t border-white/[0.08] pt-12 space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <span className="font-mono text-xs font-semibold uppercase text-cyan-400 tracking-widest block mb-2">
+                  Application Screenshots
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">
+                  Visual Interface &amp; Workflows
+                </h2>
+              </div>
+              <span className="font-mono text-xs text-slate-400">
+                {project.images.length} VERIFIED WORKFLOWS
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.images.map((img, i) => {
+                const captions: Record<string, { title: string; desc: string }> = {
+                  "/images/wandernest/home.png": {
+                    title: "Explore Catalog & Filter System",
+                    desc: "Explore stays, filter by trending categories & calculate totals with taxes.",
+                  },
+                  "/images/wandernest/booking.png": {
+                    title: "Listing Details & Reservation Flow",
+                    desc: "Property details, dynamic night pricing, reservation date picker & user reviews.",
+                  },
+                  "/images/wandernest/ai.png": {
+                    title: "AI Travel Assistant",
+                    desc: "AI trip planner with custom itineraries, live weather insights & packing checklists.",
+                  },
+                  "/images/wandernest/listings.png": {
+                    title: "Host Dashboard: Create Listing",
+                    desc: "Property host submission form with Cloudinary image upload & location geocoding.",
+                  },
+                  "/images/campus/home.png": {
+                    title: "Marketplace Feed & Multi-Filter System",
+                    desc: "Browse verified campus items, filter by For Sale, Looking to Buy, or Barter Exchange.",
+                  },
+                  "/images/campus/chat.png": {
+                    title: "Real-Time 1-on-1 Messaging",
+                    desc: "Socket.io real-time chat threads for price negotiation and campus meetup coordination.",
+                  },
+                  "/images/campus/profile.png": {
+                    title: "Student Identity & Campus Verification",
+                    desc: "Domain-restricted @gla.ac.in authentication and student verification profile.",
+                  },
+                  "/images/campus/listings.png": {
+                    title: "Student Identity & Campus Verification",
+                    desc: "Domain-restricted @gla.ac.in authentication and student verification profile.",
+                  },
+                };
+                const caption = captions[img];
+
+                return (
+                  <div
+                    key={i}
+                    className="group rounded-2xl border border-white/[0.08] bg-slate-900/60 p-3 backdrop-blur-md hover:border-cyan-500/40 transition-all duration-300 shadow-xl space-y-3"
+                  >
+                    <div className="relative aspect-[16/9] w-full rounded-xl bg-[#070a10] overflow-hidden border border-white/[0.04]">
+                      <Image
+                        src={img}
+                        alt={caption?.title || `${project.title} screenshot ${i + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-contain p-1 group-hover:scale-[1.02] transition-transform duration-300"
+                      />
+                    </div>
+                    {caption && (
+                      <div className="px-2 pb-1">
+                        <h4 className="text-sm font-semibold text-slate-200">
+                          {caption.title}
+                        </h4>
+                        <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                          {caption.desc}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {/* ============================================================
             05. Engineering Challenges & Decisions

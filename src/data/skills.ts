@@ -1,29 +1,22 @@
 import type { SkillCategory } from "@/types/project";
 
 /**
- * Skills organized by category.
- * Only includes technologies Shashank has confirmed.
+ * Technical skills organized by clear, authentic categories.
+ * Only includes technologies Shashank has worked with and confirmed.
  */
 export const skills: SkillCategory[] = [
   {
-    title: "Languages",
+    title: "LANGUAGES",
     icon: "Code2",
     skills: ["Java", "JavaScript", "Python", "SQL"],
   },
   {
-    title: "Frontend",
+    title: "FRONTEND",
     icon: "Layout",
-    skills: [
-      "HTML",
-      "CSS",
-      "Bootstrap",
-      "EJS",
-      "React.js",
-      "Responsive Design",
-    ],
+    skills: ["HTML", "CSS", "React.js", "Next.js", "EJS", "Bootstrap"],
   },
   {
-    title: "Backend",
+    title: "BACKEND",
     icon: "Server",
     skills: [
       "Node.js",
@@ -35,23 +28,24 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    title: "Database",
+    title: "DATABASES",
     icon: "Database",
     skills: ["MongoDB", "Mongoose"],
   },
   {
-    title: "Tools",
+    title: "TOOLS & SERVICES",
     icon: "Wrench",
     skills: ["Git", "GitHub", "Cloudinary", "VS Code"],
   },
   {
-    title: "Core CS",
+    title: "CORE CS",
     icon: "GraduationCap",
     skills: [
       "Data Structures & Algorithms",
       "OOP",
       "DBMS",
-      "MVC Architecture",
+      "Operating Systems",
+      "Computer Networks",
     ],
   },
   {
@@ -60,7 +54,7 @@ export const skills: SkillCategory[] = [
     skills: [
       "Generative AI",
       "AI API Integration",
-      "AI-powered App Development",
+      "AI-assisted Application Development",
     ],
   },
 ];

@@ -1,21 +1,29 @@
+import {
+  RESUME_URL,
+  GITHUB_PROFILE,
+  LINKEDIN_URL,
+  EMAIL_ADDRESS,
+} from "@/data/portfolio";
+
 /** Site-wide constants */
 export const SITE = {
   name: "Shashank Shekhar",
-  role: "Full Stack Developer",
-  tagline: "I build technology that solves real problems.",
+  role: "Software Engineer · Full-Stack & AI Systems",
+  tagline: "I like taking ideas from “this could be useful” to “this actually\u00A0works.”",
   description:
-    "Full Stack Developer & AI Enthusiast building real-world software with modern technologies.",
+    "I build full-stack applications, backend systems, and AI-powered features with a focus on clean architecture and practical problem solving.",
   url: "https://shashankshekhar.dev", // Update after deployment
-  github: "https://github.com/shashank8536",
-  linkedin: "https://www.linkedin.com/in/shashank8536/",
-  email: "shashankshekhargiri2003@gmail.com",
+  github: GITHUB_PROFILE,
+  linkedin: LINKEDIN_URL,
+  email: EMAIL_ADDRESS,
+  resume: RESUME_URL,
 } as const;
 
 /** Navigation links */
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ] as const;
 

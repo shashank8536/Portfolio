@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { GlobalInteractiveBackground } from "@/components/background/GlobalInteractiveBackground";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,23 +18,25 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shashank Shekhar — Full Stack Developer",
+  title: "Shashank Shekhar — Software Engineer",
   description:
-    "I build technology that solves real problems. Full Stack Developer & AI Enthusiast — explore my projects, skills, and story.",
+    "Software Engineer building full-stack applications, backend systems, and AI-powered tools with a focus on clean architecture.",
   keywords: [
     "Shashank Shekhar",
+    "Software Engineer",
     "Full Stack Developer",
     "Portfolio",
-    "React",
+    "Next.js",
     "Node.js",
-    "AI",
-    "Web Developer",
+    "TypeScript",
+    "AI Agents",
+    "System Design",
   ],
   authors: [{ name: "Shashank Shekhar" }],
   openGraph: {
-    title: "Shashank Shekhar — Full Stack Developer",
+    title: "Shashank Shekhar — Software Engineer",
     description:
-      "I build technology that solves real problems. Explore my projects, skills, and story.",
+      "Software Engineer building full-stack applications, backend systems, and AI-powered tools.",
     type: "website",
     locale: "en_US",
   },
@@ -48,8 +51,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col antialiased">
+      <body className="min-h-full flex flex-col antialiased relative selection:bg-cyan-500/20 selection:text-cyan-200" suppressHydrationWarning>
+        <GlobalInteractiveBackground />
         <Navbar />
         {children}
         <Footer />
